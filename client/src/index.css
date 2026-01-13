@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Elegant, atmospheric palette based on dark overlays */
+  --background: 220 15% 10%;
+  --foreground: 40 20% 94%;
+
+  /* Primary accent: A muted gold/amber for elegance */
+  --primary: 35 30% 60%;
+  --primary-foreground: 220 15% 10%;
+
+  --secondary: 220 15% 20%;
+  --secondary-foreground: 40 20% 90%;
+
+  --muted: 220 15% 25%;
+  --muted-foreground: 220 10% 70%;
+
+  --accent: 35 40% 50%;
+  --accent-foreground: 220 15% 10%;
+
+  --destructive: 0 60% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 220 15% 20%;
+  --input: 220 15% 20%;
+  --ring: 35 30% 60%;
+
+  --radius: 0.75rem;
+
+  --font-serif: 'Libre Baskerville', serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Playfair Display', serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    background-image: url('./assets/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
+}
+
+/* Custom Glassmorphism Utilities */
+.glass-panel {
+  @apply bg-black/40 backdrop-blur-md border border-white/10 shadow-xl;
+}
+
+.glass-card {
+  @apply bg-black/30 backdrop-blur-sm border border-white/5 shadow-lg transition-all duration-300;
+}
+
+.glass-card:hover {
+  @apply bg-black/50 border-white/20 transform -translate-y-1 shadow-2xl shadow-black/40;
+}
+
+/* Typography Helpers */
+.text-balance {
+  text-wrap: balance;
+}
+
+.poem-content {
+  font-family: var(--font-serif);
+  line-height: 1.8;
+  font-size: 1.125rem;
+  white-space: pre-wrap;
+  /* Respect newlines in poems */
+}
