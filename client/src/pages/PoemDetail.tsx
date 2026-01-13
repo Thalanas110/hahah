@@ -3,14 +3,26 @@ import { usePoem } from "@/hooks/use-poems";
 import { Background } from "@/components/Background";
 import { LoadingState } from "@/components/LoadingState";
 import { ErrorState } from "@/components/ErrorState";
-import { ArrowLeft, Share2, Heart } from "lucide-react";
+import { ArrowLeft, Share2, Download, Check } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import { toPng } from 'html-to-image';
+import { jsPDF } from 'jspdf';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { useToast } from "@/hooks/use-toast"; // assuming this exists based on package.json having toast
 
 export default function PoemDetail() {
   const [match, params] = useRoute("/poem/:id");
   const id = params?.id;
   const { data: poem, isLoading, error } = usePoem(id);
+  const poemRef = useRef<HTMLElement>(null);
+  const { toast } = useToast();
+  const [isSharing, setIsSharing] = useState(false);
 
   // Scroll to top on load
   useEffect(() => {
@@ -42,6 +54,7 @@ export default function PoemDetail() {
           <ErrorState message={error?.message || "Poem not found"} />
         ) : (
           <motion.article
+            ref={poemRef}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
@@ -82,18 +95,94 @@ export default function PoemDetail() {
             </div>
 
             <footer className="pt-8 border-t border-white/10 flex justify-center gap-6">
-              <button
-                className="flex items-center gap-2 text-white/50 hover:text-red-400 transition-colors"
-                title="Favorite (Demo)"
-              >
-                <Heart className="w-5 h-5" />
-                <span className="text-xs uppercase tracking-wider">Save</span>
-              </button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button
+                    className="flex items-center gap-2 text-white/50 hover:text-primary transition-colors focus:outline-none"
+                    title="Save Poem"
+                  >
+                    <Download className="w-5 h-5" />
+                    <span className="text-xs uppercase tracking-wider">Save</span>
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="center" className="bg-black/80 backdrop-blur-xl border-white/10 text-white">
+                  <DropdownMenuItem
+                    className="hover:bg-white/10 cursor-pointer focus:bg-white/10 focus:text-white"
+                    onClick={async () => {
+                      if (poemRef.current) {
+                        try {
+                          const dataUrl = await toPng(poemRef.current, { cacheBust: true });
+                          const link = document.createElement('a');
+                          link.download = `${poem.title.replace(/\s+/g, '-').toLowerCase()}.png`;
+                          link.href = dataUrl;
+                          link.click();
+                          toast({ description: "Poem saved as image" });
+                        } catch (err) {
+                          console.error(err);
+                          toast({ variant: "destructive", description: "Failed to save image" });
+                        }
+                      }
+                    }}
+                  >
+                    Save as Image
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="hover:bg-white/10 cursor-pointer focus:bg-white/10 focus:text-white"
+                    onClick={async () => {
+                      if (poemRef.current) {
+                        try {
+                          const dataUrl = await toPng(poemRef.current, { cacheBust: true });
+                          const pdf = new jsPDF({
+                            orientation: 'portrait',
+                            unit: 'px',
+                            format: [poemRef.current.offsetWidth, poemRef.current.offsetHeight]
+                          });
+                          pdf.addImage(dataUrl, 'PNG', 0, 0, poemRef.current.offsetWidth, poemRef.current.offsetHeight);
+                          pdf.save(`${poem.title.replace(/\s+/g, '-').toLowerCase()}.pdf`);
+                          toast({ description: "Poem saved as PDF" });
+                        } catch (err) {
+                          console.error(err);
+                          toast({ variant: "destructive", description: "Failed to save PDF" });
+                        }
+                      }
+                    }}
+                  >
+                    Save as PDF
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
               <button
                 className="flex items-center gap-2 text-white/50 hover:text-blue-400 transition-colors"
-                title="Share (Demo)"
+                title="Share"
+                disabled={isSharing}
+                onClick={async () => {
+                  try {
+                    setIsSharing(true);
+                    if (navigator.share) {
+                      await navigator.share({
+                        title: poem.title,
+                        text: `Read "${poem.title}" by ${poem.author}`,
+                        url: window.location.href,
+                      });
+                    } else {
+                      await navigator.clipboard.writeText(window.location.href);
+                      toast({
+                        description: (
+                          <div className="flex items-center gap-2">
+                            <Check className="w-4 h-4" /> Link copied to clipboard
+                          </div>
+                        )
+                      });
+                    }
+                  } catch (err) {
+                    console.error("Share failed:", err);
+                  } finally {
+                    setIsSharing(false);
+                  }
+                }}
               >
-                <Share2 className="w-5 h-5" />
+                {isSharing ? <Check className="w-5 h-5" /> : <Share2 className="w-5 h-5" />}
                 <span className="text-xs uppercase tracking-wider">Share</span>
               </button>
             </footer>
