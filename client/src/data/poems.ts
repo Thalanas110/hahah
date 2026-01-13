@@ -48,7 +48,7 @@ export const poems: Poem[] = [
     },
     {
         id: 'arcanum',
-        title: 'Arcanum',
+        title: 'Arcanum Academy',
         whois: ['The one who stayed'],
         author: 'Marcus Morales F. Washington',
         moods: ['reflective', 'curious', 'restrained'],
