@@ -95,7 +95,7 @@ export const poems: Poem[] = [
         id: 'when-we-spoke',
         title: 'When We Spoke',
         whois: ['The one I learned to speak to'],
-        author: 'Francis Lawrence P. Morales',
+        author: 'Marcus Morales F. Washington',
         moods: ['reflective', 'warm'],
         stanzas: [
             [
@@ -144,8 +144,8 @@ export const poems: Poem[] = [
         moods: ['respectful', 'gentle'],
         stanzas: [
             [
-                'I called you “Your Majesty,”',
-                'Not as a joke, nor as exaggeration,',
+                'I called you "Your Majesty,"',
+                'Not as a joke or exaggeration,',
                 'But as a quiet acknowledgment',
                 'Of the dignity you carry.',
             ],
@@ -174,11 +174,179 @@ export const poems: Poem[] = [
                 'One that should never fall short.',
             ],
             [
+                'I hope you always have space,',
+                'To breathe without apology,',
+                'To speak without hesitation,',
+                'To exist without compromise.',
+            ],
+            [
+                'I hope life offers you warmth,',
+                'Even when days are gray,',
+                'And that the world bends gently,',
+                'In ways that honor who you are.',
+            ],
+            [
+                'The way you carry yourself quietly,',
+                'Commands more than attention—it inspires,',
+                'A steady reminder',
+                'That grace is found in consistency.',
+            ],
+            [
+                'There is strength in your presence,',
+                'Not loud, not demanding,',
+                'But unwavering,',
+                'Like a pillar that needs no announcement.',
+            ],
+            [
+                'I notice the small ways you navigate,',
+                'Each choice deliberate, thoughtful,',
+                'Each action careful yet natural,',
+                'And it leaves me quietly in awe.',
+            ],
+            [
+                'Your patience is not passive,',
+                'It is measured and deliberate,',
+                'A calm power that shapes space around you,',
+                'Without seeking praise or credit.',
+            ],
+            [
+                'I admire the balance you maintain,',
+                'The way you hold your peace,',
+                'Without letting chaos define you,',
+                'Or other people sway your center.',
+            ],
+            [
+                'Even in moments of fatigue,',
+                'You carry a quiet dignity,',
+                'A reminder that rest can coexist',
+                'With strength and presence.',
+            ],
+            [
+                'Your words, when spoken, are measured,',
+                'Full of thought, careful intention,',
+                'Not flattery, not posturing,',
+                'Just honest expression.',
+            ],
+            [
+                'I hope those who know you notice,',
+                'And treat you with the same care I do,',
+                'That they honor the quiet ways you shine,',
+                'As I quietly continue to do.',
+            ],
+            [
+                'You are not a prize to be won,',
+                'Nor a trophy for admiration,',
+                'You are a person of substance,',
+                'Who deserves recognition without expectation.',
+            ],
+            [
+                'Your existence sets a standard,',
+                'One that cannot be borrowed or imitated,',
+                'It is yours alone, and it matters,',
+                'Not for show, but for truth.',
+            ],
+            [
+                'I called you "Your Majesty,"',
+                'Because some titles hold meaning beyond ceremony,',
+                'Because some acknowledgments are offered,',
+                'Simply to honor presence itself.',
+            ],
+            [
+                'And in honoring you quietly,',
+                'I am reminded of what should be ordinary—',
+                'That respect is never optional,',
+                'That dignity is never negotiable.',
+            ],
+            [
                 'So I speak the title with care,',
                 'Not to place you above others,',
                 'But to remind myself',
                 'Of how you ought to be treated.',
             ],
+            [
+                'May your life hold moments of ease,',
+                'May your days reflect gentleness,',
+                'May the world bend softly around you,',
+                'And may peace always find you.',
+            ]
+        ]
+    },
+    {
+        id: 'unsaid',
+        title: 'Unsaid',
+        whois: ['The one I never told'],
+        author: 'Marcus Morales F. Washington',
+        moods: ['quiet', 'admiring'],
+        stanzas: [
+            [
+                'There are things I never say aloud,',
+                'Thoughts I keep carefully unspoken,',
+                'Not because they are unclear,',
+                'But because some truths ask for restraint.',
+            ],
+            [
+                'You are effortlessly beautiful,',
+                'In ways that do not demand attention,',
+                'Even your voice, roughened and hoarse,',
+                'Feels like music when it reaches me.',
+            ],
+            [
+                'What surprises me most is your kindness,',
+                'How gently you treat what you are given,',
+                'How easily warmth finds its way',
+                'Into moments that ask nothing of you.',
+            ],
+            [
+                'So I keep these feelings where they belong,',
+                'Unspoken, but never dismissed,',
+                'Present in the way I listen,',
+                'And in the care I choose to show.',
+            ],
         ],
-    }
+    },
+    {
+        id: 'gentle-steps',
+        title: 'Gentle Steps',
+        whois: ['The one I share this space with'],
+        author: 'Francis Lawrence P. Morales',
+        moods: ['reflective', 'comfortable'],
+        stanzas: [
+            [
+                'Some friendships grow quietly,',
+                'Not with leaps or big gestures,',
+                'But in small, steady moments,',
+                'Like the way I notice you in chats.',
+            ],
+            [
+                'Talking with you feels easy now,',
+                'Laughter slips in naturally,',
+                'And silences aren’t awkward—',
+                'They’re just part of being us.',
+            ],
+            [
+                'I hope this pace can keep going,',
+                'No rush, no pressure, just steady,',
+                'A space where showing up is enough,',
+                'And I know you feel that too.',
+            ],
+            [
+                'Your steadiness has become grounding,',
+                'A reminder that I don’t have to force things,',
+                'That we can be ourselves,',
+                'And that’s already enough for me.',
+            ],
+            [
+                'I notice the small ways you’re thoughtful,',
+                'How you reply, even when tired or busy,',
+                'And how simple kindness comes so easily from you,',
+                'Without making it a thing at all.',
+            ],
+            [
+                'So I let this friendship move forward,',
+                'Not in leaps, not in declarations,',
+                'But in gentle steps—together, quietly,',
+                'And I’m glad it’s like this with you.',
+            ],
+        ],
+    },
 ];
