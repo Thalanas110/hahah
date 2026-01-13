@@ -3,7 +3,6 @@ export interface Poem {
   title: string;
   whois: string[];
   author: string;
-  password: string;
   moods: string[];
   stanzas: string[][];
 }
