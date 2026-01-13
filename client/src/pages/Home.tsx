@@ -20,7 +20,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <p className="text-primary font-medium tracking-[0.2em] text-sm uppercase mb-3">
-              To  whoever am I sending this poems
+              To Her Majesty, the poem's target audience
             </p>
             <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
               Welcome to my humble collection~

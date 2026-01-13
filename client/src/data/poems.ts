@@ -308,7 +308,7 @@ export const poems: Poem[] = [
         id: 'gentle-steps',
         title: 'Gentle Steps',
         whois: ['The one I share this space with'],
-        author: 'Francis Lawrence P. Morales',
+        author: 'Marcus Morales F. Washington',
         moods: ['reflective', 'comfortable'],
         stanzas: [
             [
