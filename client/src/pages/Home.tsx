@@ -23,7 +23,7 @@ export default function Home() {
               To  whoever am I sending this poems
             </p>
             <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
-              Welcome to my humble collection wahaha
+              Welcome to my humble collection~
             </h1>
             <div className="h-1 w-24 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-6 opacity-60"></div>
             <p className="text-lg md:text-xl text-white/70 font-serif italic">
