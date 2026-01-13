@@ -18,7 +18,7 @@ export function PoemCard({ poem, index }: PoemCardProps) {
     >
       <Link href={`/poem/${poem.id}`} className="group block h-full">
         <div className="glass-card rounded-xl p-6 h-full flex flex-col relative overflow-hidden group-hover:border-primary/30">
-          
+
           {/* Subtle decoration */}
           <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
             <Feather size={48} />
@@ -26,7 +26,7 @@ export function PoemCard({ poem, index }: PoemCardProps) {
 
           <div className="mb-4">
             <p className="text-xs uppercase tracking-widest text-primary/80 font-semibold mb-2">
-              Classic Poetry
+              {poem.whois.join(", ")}
             </p>
             <h3 className="text-2xl font-display font-bold text-white mb-1 group-hover:text-primary transition-colors">
               {poem.title}
@@ -38,7 +38,7 @@ export function PoemCard({ poem, index }: PoemCardProps) {
 
           <div className="flex-grow">
             <p className="text-white/80 font-serif leading-relaxed line-clamp-4 text-sm opacity-90">
-              "{poem.excerpt}..."
+              "{poem.stanzas[0][0]}..."
             </p>
           </div>
 

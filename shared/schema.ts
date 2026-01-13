@@ -1,7 +1,9 @@
 export interface Poem {
-  id: number;
+  id: string;
   title: string;
-  content: string;
-  excerpt: string;
+  whois: string[];
   author: string;
+  password: string;
+  moods: string[];
+  stanzas: string[][];
 }

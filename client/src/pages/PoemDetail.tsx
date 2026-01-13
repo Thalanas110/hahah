@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 export default function PoemDetail() {
   const [match, params] = useRoute("/poem/:id");
-  const id = params ? parseInt(params.id) : 0;
+  const id = params?.id;
   const { data: poem, isLoading, error } = usePoem(id);
 
   // Scroll to top on load
@@ -41,7 +41,7 @@ export default function PoemDetail() {
         ) : error || !poem ? (
           <ErrorState message={error?.message || "Poem not found"} />
         ) : (
-          <motion.article 
+          <motion.article
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
@@ -50,6 +50,13 @@ export default function PoemDetail() {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
 
             <header className="text-center mb-12">
+              <div className="mb-4 flex flex-wrap justify-center gap-2">
+                {poem.moods.map(mood => (
+                  <span key={mood} className="text-xs uppercase tracking-widest text-primary/60 border border-primary/20 px-2 py-1 rounded-full">
+                    {mood}
+                  </span>
+                ))}
+              </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6">
                 {poem.title}
               </h1>
@@ -62,19 +69,27 @@ export default function PoemDetail() {
               </div>
             </header>
 
-            <div className="poem-content text-white/90 mb-12 text-center max-w-2xl mx-auto">
-              {poem.content}
+            <div className="poem-content text-white/90 mb-12 text-center max-w-2xl mx-auto space-y-6">
+              {poem.stanzas.map((stanza, i) => (
+                <div key={i} className="mb-6">
+                  {stanza.map((line, j) => (
+                    <p key={j} className="leading-relaxed font-serif text-lg">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              ))}
             </div>
 
             <footer className="pt-8 border-t border-white/10 flex justify-center gap-6">
-              <button 
+              <button
                 className="flex items-center gap-2 text-white/50 hover:text-red-400 transition-colors"
                 title="Favorite (Demo)"
               >
                 <Heart className="w-5 h-5" />
                 <span className="text-xs uppercase tracking-wider">Save</span>
               </button>
-              <button 
+              <button
                 className="flex items-center gap-2 text-white/50 hover:text-blue-400 transition-colors"
                 title="Share (Demo)"
               >

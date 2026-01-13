@@ -8,13 +8,14 @@ export function usePoems() {
   });
 }
 
-export function usePoem(id: number) {
+export function usePoem(id: string | undefined) {
   return useQuery({
     queryKey: ['poems', id],
     queryFn: () => {
+      if (!id) return null;
       const poem = poems.find(p => p.id === id);
       return poem || null;
     },
-    enabled: !isNaN(id),
+    enabled: !!id,
   });
 }
